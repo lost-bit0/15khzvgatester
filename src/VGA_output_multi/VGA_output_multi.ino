@@ -144,6 +144,20 @@ static const modeParams_st modeSTLow50Hz = {
   /* verticalPixelsPerLine                                  */ 10u,
   /* verticalBytes (=verticalPixels/verticalPixelsPerLine)  */ 200u / 10u,
 };
+static const modeParams_st modeHerc50Hz = {
+  /* verticalFrontPorchLineStart (active area + backporch)  */ 348u + 20u, // done
+  /* verticalLines (total including sync pulse and porches) */ 367u, // done
+  /* frameCountToSwitch                                     */ 500u, // done
+  /* modeName                                               */ "HGC50", // done
+  /* horizontalPeriod (in 0.5us steps less one)             */ 108u, // done
+  /* horizontalPulse (in 0.5us steps less one)              */ 16u, // done
+  /* horizontalBackPorchCy                                  */ 30u,
+  /* horizontalBytes                                        */ 50u,
+  /* verticalPulseLines                                     */ 16u, // done
+  /* verticalBackPorchLines                                 */ 20u - 1u, // done
+  /* verticalPixelsPerLine                                  */ 12u,
+  /* verticalBytes (=verticalPixels/verticalPixelsPerLine)  */ 348u / 12u,
+};
 
 /* First mode listed is the mode at startup */
 static const modeParams_st * modesArray[] = {
@@ -151,6 +165,7 @@ static const modeParams_st * modesArray[] = {
   &modeSTHigh71Hz,
   &modeSTLow60Hz,
   &modeSTLow50Hz,
+  &modeHerc50Hz,
 };
 static modeParams_st videomode;
 static byte          currentMode = 0u;
